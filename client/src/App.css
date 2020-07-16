@@ -1,0 +1,55 @@
+body {
+  background-color: skyblue;
+}
+
+a {
+  color: black !important;
+}
+
+a:hover {
+  color: #2bbbad !important;
+}
+
+.myCard {
+  margin-top: 4rem;
+}
+
+.auth-card {
+  padding: 1.5rem;
+  margin: 1.5rem auto;
+  max-width: 400px;
+  text-align: center;
+}
+
+.input-field input[type="text"]:focus {
+  border-bottom: 1px solid #2bbbad !important;
+  box-shadow: 0 1px 0 0 #2bbbad !important;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.item {
+  width: 30%;
+  margin-bottom: 1.5rem;
+}
+
+.card-home {
+  max-width: 600px;
+  height: max-content;
+  margin: 26px auto;
+}
+
+.input-field {
+  margin: 3rem auto;
+  max-width: 700px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.material-icons:hover {
+  cursor: pointer;
+}
