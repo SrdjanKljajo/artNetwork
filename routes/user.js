@@ -39,9 +39,7 @@ router.put('/follow', requireLogin, (req, res) => {
         }).catch(err => {
             return res.status(422).json({ error: err })
         })
-
-    }
-    )
+    })
 })
 
 router.put('/unfollow', requireLogin, (req, res) => {
@@ -72,6 +70,17 @@ router.put('/updatepic', requireLogin, (req, res) => {
                 return res.status(422).json({ error: "Došlo je do greške, pokušajte ponovo" })
             }
             res.json(result)
+        })
+})
+
+router.post('/search-users', (req, res) => {
+    let userPattern = new RegExp("^" + req.body.query)
+    User.find({ name: { $regex: userPattern } })
+        .select("_id name pic")
+        .then(user => {
+            res.json({ user })
+        }).catch(err => {
+            console.log(err)
         })
 })
 

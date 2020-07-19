@@ -12,7 +12,6 @@ const SubscribesUserPost = () => {
             }
         }).then(res => res.json())
             .then(result => {
-                console.log(result)
                 setData(result.posts)
             })
     }, [])
@@ -29,7 +28,6 @@ const SubscribesUserPost = () => {
             })
         }).then(res => res.json())
             .then(result => {
-                //   console.log(result)
                 const newData = data.map(item => {
                     if (item._id === result._id) {
                         return result
@@ -54,7 +52,6 @@ const SubscribesUserPost = () => {
             })
         }).then(res => res.json())
             .then(result => {
-                //   console.log(result)
                 const newData = data.map(item => {
                     if (item._id === result._id) {
                         return result
@@ -95,21 +92,6 @@ const SubscribesUserPost = () => {
             })
     }
 
-    const deletePost = (postid) => {
-        fetch(`/deletepost/${postid}`, {
-            method: "delete",
-            headers: {
-                Authorization: "Bearer " + localStorage.getItem("jwt")
-            }
-        }).then(res => res.json())
-            .then(result => {
-                console.log(result)
-                const newData = data.filter(item => {
-                    return item._id !== result._id
-                })
-                setData(newData)
-            })
-    }
     return (
         <div className="home">
             {
