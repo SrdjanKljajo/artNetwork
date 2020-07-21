@@ -36,6 +36,7 @@ router.get('/myposts', requireLogin, (req, res) => {
     Post.find({ postedBy: req.user._id })
         .populate("postedBy", "_id name pic")
         .populate("comments.postedBy", "_id name pic")
+        .sort('-createdAt')
         .then(myposts => {
             res.json({ myposts })
         })
@@ -137,6 +138,19 @@ router.delete('/deletepost/:postId', requireLogin, (req, res) => {
             }
         })
 })
+/*
+router.delete("/deletecomment/:commentId", requireLogin, (req, res) => {
+    Post.findByIdAndDelete(req.params.commentId)
+        .populate("comments.postedBy", "_id name pic")
+        .populate("postedBy", "_id name pic")
+        .exec((err, result) => {
+            if (err) {
+                return res.status(422).json({ error: err })
+            } else {
+                res.json(result);
+            }
+        })
+}) */
 
 
 module.exports = router

@@ -140,7 +140,7 @@ const Home = () => {
                                         onClick={() => { likePost(item._id) }}
                                     >thumb_up</i>
                                 }
-                                <h6>{item.likes.length} likes</h6>
+                                <h6>Sviđanja: {item.likes.length}</h6>
                                 <h6>{item.title}</h6>
                                 <p>{item.body}</p>
                                 {

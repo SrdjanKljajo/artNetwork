@@ -1,5 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: whitesmoke;
+  margin: 5px;
+  overflow-x: hidden;
+}
+
+nav {
+  padding: 0 10px;
+  background-color: white;
 }
 
 a {
@@ -27,6 +38,13 @@ a:hover {
   box-shadow: 0 1px 0 0 #2bbbad !important;
 }
 
+.com {
+  cursor: pointer;
+  font-size: 0.8em;
+  margin-left: 10px;
+  padding-top: 7px;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
@@ -36,6 +54,9 @@ a:hover {
 .item {
   width: 30%;
   margin-bottom: 1.5rem;
+}
+.span-com {
+  line-height: 1.4;
 }
 
 .card-home {
@@ -53,4 +74,15 @@ a:hover {
 
 .material-icons:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 600px) {
+  .profil-img {
+    margin-right: 15px;
+    width: 150px !important;
+  }
+
+  .profil-name {
+    font-size: 1.8em;
+  }
 }

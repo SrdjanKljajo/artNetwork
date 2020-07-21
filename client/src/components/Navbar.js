@@ -48,7 +48,7 @@ const Navbar = () => {
                             dispatch({ type: "CLEAR" })
                             history.push('/signin')
                         }}>
-                            Odjavite se
+                            Odjava
                 </button>
                     </li>
                 </>
@@ -88,14 +88,13 @@ const Navbar = () => {
                                 setSearch('')
                             }}><li className="collection-item "><img src={item.pic} alt="" style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }} />{item.name}</li></Link>
                         })}
-
                     </ul>
                 </div>
                 <div className="modal-footer">
-                    <button className="modal-close waves-effect waves-green btn-flat" onClick={() => setSearch('')}>close</button>
+                    <button className="modal-close waves-effect waves-green btn-flat" onClick={() => setSearch('')}>Zatvori</button>
                 </div>
             </div>
-            <ul className="sidenav" id="mobile-demo" ref={sideNav}>
+            <ul className="sidenav sidenav-close" id="mobile-demo" ref={sideNav}>
                 <RenderList />
             </ul>
         </>

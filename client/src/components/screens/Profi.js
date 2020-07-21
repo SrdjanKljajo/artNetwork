@@ -149,6 +149,23 @@ const Profi = () => {
                 setData(newData)
             })
     }
+
+    /* const deleteComment = (commentId) => {
+         fetch(`/deletecomment/${commentId}`, {
+             method: "delete",
+             headers: {
+                 Authorization: "Bearer " + localStorage.getItem("jwt")
+             }
+         }).then(res => res.json())
+             .then(result => {
+                 console.log(result)
+                 const newData = data.filter(item => {
+                     return item._id !== result._id
+                 })
+                 setData(newData)
+             })
+     } */
+
     return (
         <div className="home">
             <div style={{
@@ -160,14 +177,14 @@ const Profi = () => {
                     justifyContent: "space-around",
                 }}>
                     <div>
-                        <img style={{ width: "160px", borderRadius: "25px" }}
-                            src={state ? state.pic : "loading"} alt="person" />
+                        <img style={{ width: "250px", borderRadius: "25px" }}
+                            src={state ? state.pic : "loading"} className="profil-img" alt="person" />
                     </div>
                     <div>
-                        <h4>{state ? state.name : "loading"}</h4>
-                        <div style={{ display: "flex", justifyContent: "space-between", width: "108%" }}>
+                        <h4 className="profil-name">{state ? state.name : "loading"}</h4>
+                        <div>
                             <h6>Postova: {data.length}</h6>
-                            <h6>Pratioci:{state ? state.followers.length : "0"}</h6>
+                            <h6>Pratioci: {state ? state.followers.length : "0"}</h6>
                             <h6>Praćenja: {state ? state.following.length : "0"}</h6>
                         </div>
                     </div>
@@ -212,8 +229,6 @@ const Profi = () => {
                                         onClick={() => { likePost(item._id) }}
                                     >thumb_up</i>
                                 }
-
-
                                 <h6>{item.likes.length} likes</h6>
                                 <h6>{item.title}</h6>
                                 <p>{item.body}</p>
@@ -221,7 +236,14 @@ const Profi = () => {
                                     item.comments.map(record => {
                                         return (
                                             <h6 key={record._id}><Link to={record.postedBy._id !== state._id ? "/profile/" + record.postedBy._id : "/profile"} style={{ fontWeight: "bold", fontSize: "1.2rem" }}><img style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }}
-                                                src={record.postedBy.pic} alt="" />{record.postedBy.name}: </Link> {record.text}</h6>
+                                                src={record.postedBy.pic} alt="" />{record.postedBy.name}: </Link><span className="span-com">{record.text}</span>{item.postedBy._id === state._id
+                                                    &&
+                                                    <span className="com" style={{
+                                                        float: "right", color: "red"
+                                                    }}
+                                                    //onClick={() => deleteComment(record._id)}
+                                                    >Obriši</span>
+                                                }<hr /></h6>
                                         )
                                     })
                                 }
