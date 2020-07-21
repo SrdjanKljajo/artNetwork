@@ -243,7 +243,7 @@ const UserProfile = () => {
                                             makeComment(e.target[0].value, item._id)
                                             e.target[0].value = ""
                                         }}>
-                                            <input type="text" placeholder="add a comment" />
+                                            <input type="text" placeholder="dodajte komentar" />
                                         </form>
 
                                     </div>
