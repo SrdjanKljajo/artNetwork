@@ -6,8 +6,11 @@ const jwt = require('jsonwebtoken')
 const User = require('../models/user')
 const { JWT_SECRET } = require('../config/keys')
 const requireLogin = require('../middleware/requireLogin')
+const { registerValidation, loginValidation } = require('../validation');
 
 router.post('/signup', (req, res) => {
+    const { error } = registerValidation(req.body);
+    if (error) return res.status(400).json({ error: 'Email mora biti u formi email-a, ime i šifra moraju imati najmanje 6 karaktera' })
     const { name, email, password, pic } = req.body
     if (!email || !password || !name) {
         return res.status(422).json({ error: 'Molimo popunite sva polja' })
@@ -42,6 +45,8 @@ router.post('/signup', (req, res) => {
 })
 
 router.post('/signin', (req, res) => {
+    const { error } = loginValidation(req.body);
+    if (error) return res.status(400).json({ error: 'Email mora biti u formi email-a, šifra mora imati najmanje 6 karaktera' })
     const { email, password } = req.body
     if (!email || !password) {
         return res.status(422).json({ error: 'Molimo popunite sva polja' })
