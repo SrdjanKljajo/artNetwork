@@ -5,7 +5,6 @@ import M from 'materialize-css'
 const CreatePost = () => {
 
     const history = useHistory()
-    const [title, setTitle] = useState('')
     const [body, setBody] = useState('')
     const [image, setImage] = useState('')
     const [url, setUrl] = useState('')
@@ -19,7 +18,6 @@ const CreatePost = () => {
                     'Authorization': 'Bearer ' + localStorage.getItem('jwt')
                 },
                 body: JSON.stringify({
-                    title,
                     body,
                     pic: url
                 })

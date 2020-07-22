@@ -101,7 +101,7 @@ const SubscribesUserPost = () => {
                             <h5 style={{ padding: "5px" }}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile"}><img style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }}
                                 src={item.postedBy.pic} alt="" />{item.postedBy.name}</Link> {item.postedBy._id === state._id}</h5>
                             <div className="card-image">
-                                <img src={item.photo} alt="image" />
+                                <img src={item.photo} alt="user" />
                             </div>
                             <div className="card-content">
                                 <i className="material-icons" style={{ color: "red" }}>favorite</i>

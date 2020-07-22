@@ -200,7 +200,8 @@ const Profi = () => {
                                     >delete</i>
                                 }</h5>
                             <div className="card-image">
-                                <img src={item.photo} alt="image" />
+                                <img src={item.photo} alt="korisnik" />
+
                             </div>
                             <div className="card-content">
                                 <i className="material-icons" style={{ color: "red" }}>favorite</i>

@@ -4,7 +4,6 @@ import { Link, useParams } from 'react-router-dom'
 
 const UserProfile = () => {
     const [userProfile, setProfile] = useState(null)
-    const [data, setData] = useState([])
     const { state, dispatch } = useContext(UserContext)
     const { userid } = useParams()
     const [showfollow, setShowFollow] = useState(state ? !state.following.includes(userid) : true)
@@ -19,82 +18,6 @@ const UserProfile = () => {
                 setProfile(result)
             })
     }, [])
-
-    /*const likePost = (id) => {
-        fetch('/like', {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
-            },
-            body: JSON.stringify({
-                postId: id
-            })
-        }).then(res => res.json())
-            .then(result => {
-                const newData = data.map(item => {
-                    if (item._id === result._id) {
-                        return result
-                    } else {
-                        return item
-                    }
-                })
-                setData(newData)
-            }).catch(err => {
-                console.log(err)
-            })
-    }
-    const unlikePost = (id) => {
-        fetch('/unlike', {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
-            },
-            body: JSON.stringify({
-                postId: id
-            })
-        }).then(res => res.json())
-            .then(result => {
-                const newData = data.map(item => {
-                    if (item._id === result._id) {
-                        return result
-                    } else {
-                        return item
-                    }
-                })
-                setData(newData)
-            }).catch(err => {
-                console.log(err)
-            })
-    } */
-
-    const makeComment = (text, postId) => {
-        fetch('/comment', {
-            method: "put",
-            headers: {
-                "Content-Type": "application/json",
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
-            },
-            body: JSON.stringify({
-                postId,
-                text
-            })
-        }).then(res => res.json())
-            .then(result => {
-                console.log(result)
-                const newData = data.map(item => {
-                    if (item._id === result._id) {
-                        return result
-                    } else {
-                        return item
-                    }
-                })
-                setData(newData)
-            }).catch(err => {
-                console.log(err)
-            })
-    }
 
     const followUser = () => {
         fetch('/follow', {
@@ -139,7 +62,7 @@ const UserProfile = () => {
                 localStorage.setItem("user", JSON.stringify(data))
 
                 setProfile((prevState) => {
-                    const newFollower = prevState.user.followers.filter(item => item != data._id)
+                    const newFollower = prevState.user.followers.filter(item => item !== data._id)
                     return {
                         ...prevState,
                         user: {
@@ -203,31 +126,11 @@ const UserProfile = () => {
                         userProfile.posts.map(item => {
                             return (
                                 <div className="card card-home" key={item._id}>
-                                    <h5 style={{ padding: "5px" }}><Link to={item.postedBy._id !== state._id ? "/profile/" + item.postedBy._id : "/profile"}><img style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }}
-                                        src={item.postedBy.pic} alt="" />{item.postedBy.name}</Link> {item.postedBy._id === state._id}</h5>
                                     <div className="card-image">
-                                        <img src={item.photo} alt="image" />
+                                        <img src={item.photo} alt="korisnik" />
                                     </div>
                                     <div className="card-content">
-
-
                                         <p>{item.body}</p>
-                                        {
-                                            item.comments.map(record => {
-                                                return (
-                                                    <h6 key={record._id}><Link to={record.postedBy._id !== state._id ? "/profile/" + record.postedBy._id : "/profile"} style={{ fontWeight: "bold", fontSize: "1.2rem" }}><img style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }}
-                                                        src={record.postedBy.pic} alt="" />{record.postedBy.name}: </Link><p className="span-com">{record.text}</p><hr /></h6>
-                                                )
-                                            })
-                                        }
-                                        <form onSubmit={(e) => {
-                                            e.preventDefault()
-                                            makeComment(e.target[0].value, item._id)
-                                            e.target[0].value = ""
-                                        }}>
-                                            <input type="text" placeholder="dodajte komentar" />
-                                        </form>
-
                                     </div>
                                 </div>
                             )
