@@ -46,13 +46,12 @@ router.get('/myposts', requireLogin, (req, res) => {
 })
 
 router.post('/createpost', requireLogin, (req, res) => {
-    const { title, body, pic } = req.body
-    if (!title || !body || !pic) {
+    const { body, pic } = req.body
+    if (!body || !pic) {
         res.status(422).json({ error: "Molimo popunite sva polja" })
     }
     req.user.password = undefined
     const post = new Post({
-        title,
         body,
         photo: pic,
         postedBy: req.user

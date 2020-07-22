@@ -61,13 +61,7 @@ const CreatePost = () => {
         <div className="card input-field">
             <input
                 type="text"
-                placeholder="title"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-            />
-            <input
-                type="text"
-                placeholder="body"
+                placeholder="Upišite tekst posta"
                 value={body}
                 onChange={e => setBody(e.target.value)}
             />

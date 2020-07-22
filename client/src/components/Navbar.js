@@ -42,7 +42,7 @@ const Navbar = () => {
                     <li key="3"><Link to="/profile">Profil</Link></li>
                     <li key="4"><Link to="/createpost">Kreirajte post</Link></li>
                     <li key="5"><Link to="/myfollowingpost">Praćenja</Link></li>
-                    <li key="6">
+                    <li key="7">
                         <button className="btn c62828 red darken-3" onClick={() => {
                             localStorage.clear()
                             dispatch({ type: "CLEAR" })
@@ -56,8 +56,8 @@ const Navbar = () => {
         } else {
             return (
                 <>
-                    <li key="7"><Link to="/signup">Registracija</Link></li>
-                    <li key="8"><Link to="/signin">Prijava</Link></li>
+                    <li key="8"><Link to="/signup">Registracija</Link></li>
+                    <li key="9"><Link to="/signin">Prijava</Link></li>
                 </>
             )
         }

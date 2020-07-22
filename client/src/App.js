@@ -11,6 +11,7 @@ import { reducer, initialState } from './reducers/userReducer'
 import UserProfile from './components/screens/UserProfile';
 import SubscribesUserPost from './components/screens/SubscribesUserPost';
 import Profi from './components/screens/Profi';
+import NotFound from './components/screens/NotFound';
 
 export const UserContext = createContext()
 
@@ -34,6 +35,7 @@ const Routing = () => {
       <Route path="/createpost" component={CreatePost} />
       <Route path="/profile/:userid" component={UserProfile} />
       <Route path="/myfollowingpost" component={SubscribesUserPost} />
+      <Route component={NotFound} />
     </Switch>
   )
 }

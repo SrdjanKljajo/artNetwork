@@ -141,7 +141,7 @@ const Home = () => {
                                     >thumb_up</i>
                                 }
                                 <h6>Sviđanja: {item.likes.length}</h6>
-                                <h6>{item.title}</h6>
+
                                 <p>{item.body}</p>
                                 {
                                     item.comments.map(record => {

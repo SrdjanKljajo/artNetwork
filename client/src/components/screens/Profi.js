@@ -150,27 +150,12 @@ const Profi = () => {
             })
     }
 
-    /* const deleteComment = (commentId) => {
-         fetch(`/deletecomment/${commentId}`, {
-             method: "delete",
-             headers: {
-                 Authorization: "Bearer " + localStorage.getItem("jwt")
-             }
-         }).then(res => res.json())
-             .then(result => {
-                 console.log(result)
-                 const newData = data.filter(item => {
-                     return item._id !== result._id
-                 })
-                 setData(newData)
-             })
-     } */
-
     return (
         <div className="home">
             <div style={{
                 margin: "18px 0px",
-                borderBottom: "1px solid gray"
+                borderBottom: "1px solid gray",
+                paddingBottom: "20px"
             }}>
                 <div style={{
                     display: "flex",
@@ -183,9 +168,9 @@ const Profi = () => {
                     <div>
                         <h4 className="profil-name">{state ? state.name : "loading"}</h4>
                         <div>
-                            <h6>Postova: {data.length}</h6>
-                            <h6>Pratioci: {state ? state.followers.length : "0"}</h6>
-                            <h6>Praćenja: {state ? state.following.length : "0"}</h6>
+                            <h5>Postova: <span className="profile">{data.length}</span></h5>
+                            <h5>Pratioci: <span className="profile">{state ? state.followers.length : "0"}</span></h5>
+                            <h5>Praćenja: <span className="profile">{state ? state.following.length : "0"}</span></h5>
                         </div>
                     </div>
                 </div>
@@ -229,8 +214,8 @@ const Profi = () => {
                                         onClick={() => { likePost(item._id) }}
                                     >thumb_up</i>
                                 }
-                                <h6>{item.likes.length} likes</h6>
-                                <h6>{item.title}</h6>
+                                <h6>Sviđanja: {item.likes.length}</h6>
+
                                 <p>{item.body}</p>
                                 {
                                     item.comments.map(record => {

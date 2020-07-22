@@ -18,10 +18,9 @@ const UserProfile = () => {
             .then(result => {
                 setProfile(result)
             })
-
     }, [])
 
-    const likePost = (id) => {
+    /*const likePost = (id) => {
         fetch('/like', {
             method: "put",
             headers: {
@@ -68,7 +67,7 @@ const UserProfile = () => {
             }).catch(err => {
                 console.log(err)
             })
-    }
+    } */
 
     const makeComment = (text, postId) => {
         fetch('/comment', {
@@ -173,9 +172,9 @@ const UserProfile = () => {
                             <div>
                                 <h4 className="profil-name">{userProfile ? userProfile.user.name : "loading"}</h4>
                                 <div>
-                                    <h6>Postova: {userProfile.posts.length}</h6>
-                                    <h6>Pratioci: {userProfile.user.followers.length}</h6>
-                                    <h6>Praćenja: {userProfile.user.following.length}</h6>
+                                    <h5>Postova: <span className="profile">{userProfile.posts.length}</span></h5>
+                                    <h5>Pratioci: <span className="profile">{userProfile.user.followers.length}</span></h5>
+                                    <h5>Praćenja: <span className="profile">{userProfile.user.following.length}</span></h5>
                                 </div>
                             </div>
 
@@ -210,25 +209,8 @@ const UserProfile = () => {
                                         <img src={item.photo} alt="image" />
                                     </div>
                                     <div className="card-content">
-                                        <i className="material-icons" style={{ color: "red" }}>favorite</i>
-                                        {item.likes.includes(state._id)
-                                            ?
-                                            <i className="material-icons"
-                                                onClick={() => {
-                                                    unlikePost(item._id)
-                                                    return window.location.reload()
-                                                }}
-                                            >thumb_down</i>
-                                            :
-                                            <i className="material-icons"
-                                                onClick={() => {
-                                                    likePost(item._id)
-                                                    return window.location.reload()
-                                                }}
-                                            >thumb_up</i>
-                                        }
-                                        <h6>Sviđanja: {item.likes.length}</h6>
-                                        <h6>{item.title}</h6>
+
+
                                         <p>{item.body}</p>
                                         {
                                             item.comments.map(record => {
