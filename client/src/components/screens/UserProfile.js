@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react'
 import { UserContext } from '../../App'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
+import Moment from 'react-moment';
 
 const UserProfile = () => {
     const [userProfile, setProfile] = useState(null)
@@ -126,11 +127,16 @@ const UserProfile = () => {
                         userProfile.posts.map(item => {
                             return (
                                 <div className="card card-home" key={item._id}>
+                                    <h5 style={{ padding: "5px" }}><img style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px", marginBottom: "-8px" }}
+                                        src={item.postedBy.pic} alt="" />{item.postedBy.name}{item.postedBy._id === state._id}</h5>
                                     <div className="card-image">
                                         <img src={item.photo} alt="korisnik" />
                                     </div>
+                                    <div className="date-span">Kreirano: <Moment format="YYYY/MM/DD HH:mm">
+                                        {item.date}
+                                    </Moment></div>
                                     <div className="card-content">
-                                        <p>{item.body}</p>
+                                        <h6>{item.body}</h6>
                                     </div>
                                 </div>
                             )

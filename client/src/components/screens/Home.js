@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react'
 import { UserContext } from '../../App'
 import { Link } from 'react-router-dom'
+import Moment from 'react-moment';
 
 const Home = () => {
     const [data, setData] = useState([])
@@ -128,6 +129,9 @@ const Home = () => {
                             <div className="card-image">
                                 <img src={item.photo} alt="wallpaper" />
                             </div>
+                            <div className="date-span">Kreirano: <Moment format="YYYY/MM/DD HH:mm">
+                                {item.date}
+                            </Moment></div>
                             <div className="card-content">
                                 <i className="material-icons" style={{ color: "red" }}>favorite</i>
                                 {item.likes.includes(state._id)
@@ -140,9 +144,10 @@ const Home = () => {
                                         onClick={() => { likePost(item._id) }}
                                     >thumb_up</i>
                                 }
-                                <h6>Sviđanja: {item.likes.length}</h6>
 
-                                <p>{item.body}</p>
+                                <h6>Sviđanja: <span className="svidjanja">{item.likes.length}</span></h6>
+
+                                <p className="body-post">{item.body}</p>
                                 {
                                     item.comments.map(record => {
                                         return (

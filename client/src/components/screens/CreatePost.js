@@ -19,7 +19,7 @@ const CreatePost = () => {
                 },
                 body: JSON.stringify({
                     body,
-                    pic: url
+                    pic: url,
                 })
             })
                 .then(res => res.json())

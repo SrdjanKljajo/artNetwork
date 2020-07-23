@@ -46,7 +46,7 @@ router.get('/myposts', requireLogin, (req, res) => {
 })
 
 router.post('/createpost', requireLogin, (req, res) => {
-    const { body, pic } = req.body
+    const { body, pic, date } = req.body
     if (!body || !pic) {
         res.status(422).json({ error: "Molimo popunite sva polja" })
     }
@@ -54,7 +54,8 @@ router.post('/createpost', requireLogin, (req, res) => {
     const post = new Post({
         body,
         photo: pic,
-        postedBy: req.user
+        postedBy: req.user,
+        date
     })
     post.save()
         .then(result => {

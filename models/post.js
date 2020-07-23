@@ -19,6 +19,10 @@ const postSchema = new mongoose.Schema({
     postedBy: {
         type: ObjectId,
         ref: "User"
+    },
+    date: {
+        type: Date,
+        default: Date.now
     }
 }, { timestamps: true })
 

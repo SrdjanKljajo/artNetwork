@@ -4,7 +4,6 @@
 
 body {
   background-color: whitesmoke;
-  margin: 5px;
   overflow-x: hidden;
 }
 
@@ -38,11 +37,25 @@ a:hover {
   box-shadow: 0 1px 0 0 #2bbbad !important;
 }
 
+.svidjanja {
+  font-weight: bolder;
+}
+
+.body-post {
+  font-style: italic;
+}
+
 .com {
   cursor: pointer;
   font-size: 0.8em;
   margin-left: 10px;
   padding-top: 7px;
+}
+
+.date-span {
+  font-style: italic;
+  text-align: right;
+  margin-right: 1rem;
 }
 
 .gallery {
